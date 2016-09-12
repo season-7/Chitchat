@@ -6,7 +6,7 @@ tools:context="com.chitchat.chitchat.ProfileFragment">
 <Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="QUESTIONS PAGE"
+    android:text="PROFILE PAGE"
     android:padding="8dp"
     android:textColor="#fff"
     android:background="@color/colorPrimary"
