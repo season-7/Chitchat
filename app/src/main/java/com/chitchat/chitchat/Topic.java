@@ -3,30 +3,30 @@ package com.chitchat.chitchat;
 /**
  * Created by EduhG on 9/13/2016.
  */
-public class topics {
-    String name;
-    String questions;
-    String imageUrl;
+public class Topic {
+    String author;
+    String message;
+    String uid;
 
     // empty constructor needed by the Parceler library:
-    public topics() {}
+    public Topic() {}
 
-    public topics(String name, String questions, String imageUrl) {
-        this.name = name;
-        this.questions = questions;
-        this.imageUrl = getLargeImageUrl(imageUrl);
+    public Topic(String name, String questions, String imageUrl) {
+        this.author = name;
+        this.message = questions;
+        this.uid = getLargeImageUrl(imageUrl);
     }
 
     public String getName() {
-        return name;
+        return author;
     }
 
     public String getQuestions() {
-        return questions;
+        return message;
     }
 
     public String getImageUrl(){
-        return imageUrl;
+        return uid;
     }
 
     public String getLargeImageUrl(String imageUrl) {

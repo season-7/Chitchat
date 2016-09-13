@@ -37,30 +37,33 @@ public class FirebaseTopicsViewHolder extends RecyclerView.ViewHolder implements
         itemView.setOnClickListener(this);
     }
 
-    public void bindTopic(Topics restaurant) {
+    public void bindTopic(Topic topic) {
 
         topicName = (TextView)mView.findViewById(R.id.topic_name);
         questions = (TextView)mView.findViewById(R.id.questions);
         topicPhoto = (ImageView)mView.findViewById(R.id.topic_photo);
 
         Picasso.with(mContext)
-                .load(restaurant.getImageUrl())
+                .load(topic.getImageUrl())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
                 .into(topicPhoto);
+
+        topicName.setText(topic.getName());
+        questions.setText(topic.getQuestions());
     }
 
     @Override
     public void onClick(View view) {
-        final ArrayList<Topics> topics = new ArrayList<>();
+        final ArrayList<Topic> topic = new ArrayList<>();
         mRootRef = new Firebase("https://fir-inandroid.firebaseio.com");
-        Firebase messagesRef = mRootRef.child("topics");
+        Firebase messagesRef = mRootRef.child("messages");
 
         messagesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    topics.add(snapshot.getValue(Topics.class));
+                    topic.add(snapshot.getValue(Topic.class));
                 }
 
                 int itemPosition = getLayoutPosition();
