@@ -3,6 +3,7 @@ package com.chitchat.chitchat;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.client.Firebase;
@@ -55,18 +57,18 @@ public class MainFragment extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mRootRef = new Firebase("https://fir-inandroid.firebaseio.com");
-        Firebase messagesRef = mRootRef.child("messages");
+        Firebase messagesRef = mRootRef.child("topics");
 
         FirebaseRecyclerAdapter<String, MessageViewHolder> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<String, MessageViewHolder>(
                         String.class,
-                        android.R.layout.two_line_list_item,
+                        R.layout.topics,
                         MessageViewHolder.class,
                         messagesRef
                 ) {
                     @Override
                     protected void populateViewHolder(MessageViewHolder messageViewHolder, String s, int i) {
-                        messageViewHolder.mTextView.setText(s);
+                        messageViewHolder.topicName.setText(s);
                     }
                 };
 
@@ -79,9 +81,19 @@ public class MainFragment extends Fragment {
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
         TextView mTextView;
 
-        public MessageViewHolder(View v) {
-            super(v);
-            mTextView = (TextView) v.findViewById(android.R.id.text1);
+        CardView topicView;
+        TextView topicName;
+        TextView questions;
+        ImageView topicPhoto;
+
+        public MessageViewHolder(View itemView) {
+            super(itemView);
+
+            //mTextView = (TextView) itemView.findViewById(android.R.id.text1);
+            topicView = (CardView)itemView.findViewById(R.id.topicView);
+            topicName = (TextView)itemView.findViewById(R.id.topic_name);
+            questions = (TextView)itemView.findViewById(R.id.questions);
+            topicPhoto = (ImageView)itemView.findViewById(R.id.topic_photo);
         }
     }
 
