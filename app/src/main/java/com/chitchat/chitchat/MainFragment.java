@@ -51,6 +51,7 @@ public class MainFragment extends Fragment {
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
+
         setUpFirebaseAdapter();
 
         // Inflate the layout for this fragment
