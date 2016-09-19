@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<!--customizing colors-->
 <resources>
-
-    <color name="window_background">#334567</color>
-    <color name="my_primary">#333</color>
-
-    <color name="my_primary_dark">#CCC890</color>
-    <color name="my_primary_light">#DCD456</color>
-    <color name="my_accent">#ED1C24</color>
-    <color name="my_primary_text">#ffffff</color>
-    <color name="my_secondary_text">#ffffff</color>
-    <color name="my_icons">#FFFFFF</color>
-    <color name="my_divider">#B6B6B6</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
 </resources>
